@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E4E3D891D1306440091C56D /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E4E3D881D1306440091C56D /* music.mp3 */; };
+		8E4E3D8B1D130F220091C56D /* PokemonDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4E3D8A1D130F220091C56D /* PokemonDetailVC.swift */; };
 		8E8AB0931D125CF700CC8158 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AB0921D125CF700CC8158 /* AppDelegate.swift */; };
 		8E8AB0951D125CF700CC8158 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8AB0941D125CF700CC8158 /* ViewController.swift */; };
 		8E8AB0981D125CF700CC8158 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8AB0961D125CF700CC8158 /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		8E4E3D881D1306440091C56D /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		8E4E3D8A1D130F220091C56D /* PokemonDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonDetailVC.swift; sourceTree = "<group>"; };
 		8E8AB08F1D125CF600CC8158 /* pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8AB0921D125CF700CC8158 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E8AB0941D125CF700CC8158 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				8E8AB0941D125CF700CC8158 /* ViewController.swift */,
+				8E4E3D8A1D130F220091C56D /* PokemonDetailVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				8E8AB0AC1D12677900CC8158 /* PokeCell.swift in Sources */,
 				8E8AB0951D125CF700CC8158 /* ViewController.swift in Sources */,
 				8E8AB0931D125CF700CC8158 /* AppDelegate.swift in Sources */,
+				8E4E3D8B1D130F220091C56D /* PokemonDetailVC.swift in Sources */,
 				8E8AB0A81D12609000CC8158 /* Pokemon.swift in Sources */,
 				8E8AB0AF1D12FC6E00CC8158 /* csv.swift in Sources */,
 			);
