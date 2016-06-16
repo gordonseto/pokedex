@@ -133,7 +133,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             collection.reloadData()
         } else {
             inSearchMode = true
-            let lower = searchBar.text!.lowercaseString
+            let lower = searchBar.text!.capitalizedString
             filteredPokemon = pokemon.filter({$0.name.rangeOfString(lower) != nil})
             collection.reloadData()
         }
