@@ -11,7 +11,18 @@ import UIKit
 class PokemonDetailVC: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var mainImg: UIImageView!
+    @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var typeLbl: UILabel!
+    @IBOutlet weak var defenseLbl: UILabel!
+    @IBOutlet weak var heightLbl: UILabel!
+    @IBOutlet weak var pokedexLbl: UILabel!
+    @IBOutlet weak var weightLbl: UILabel!
+    @IBOutlet weak var attackLbl: UILabel!
+    @IBOutlet weak var evoLbl: UILabel!
+    @IBOutlet weak var currentEvoImg: UIImageView!
     
+    @IBOutlet weak var nextEvoImg: UIImageView!
     var pokemon: Pokemon!
     
     override func viewDidLoad() {
@@ -19,6 +30,11 @@ class PokemonDetailVC: UIViewController {
 
         // Do any additional setup after loading the view.
         nameLabel.text = pokemon.name
+        mainImg.image = UIImage(named: "\(pokemon.pokedexId)")
+        
+        pokemon.downloadPokemonDetails { () -> () in
+            //this will be called after download is done
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,15 +42,9 @@ class PokemonDetailVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
-    */
+
 
 }
