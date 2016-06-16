@@ -9,18 +9,24 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var pokemon = [Pokemon]()
+    var filteredPokemon = [Pokemon]()
     var musicPlayer: AVAudioPlayer!
+    var inSearchMode: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         collection.delegate = self
         collection.dataSource = self
+        
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.Done
         
         initAudio()
         parsePokemonCSV()
@@ -63,7 +69,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PokeCell", forIndexPath: indexPath) as? PokeCell{
             
-            var poke = pokemon[indexPath.row]
+            let poke: Pokemon!
+            
+            if !inSearchMode {
+                poke = pokemon[indexPath.row]
+            } else {
+                poke = filteredPokemon[indexPath.row]
+            }
             cell.configureCell(poke)
             return cell
             
@@ -77,7 +89,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 718
+        
+        if !inSearchMode {
+            return pokemon.count
+        }
+        
+        return filteredPokemon.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -97,6 +114,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             musicPlayer.play()
             sender.alpha = 1.0
         }
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == nil || searchBar.text == "" {
+            inSearchMode = false
+            view.endEditing(true)
+            collection.reloadData()
+        } else {
+            inSearchMode = true
+            let lower = searchBar.text!.lowercaseString
+            filteredPokemon = pokemon.filter({$0.name.rangeOfString(lower) != nil})
+            collection.reloadData()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
     }
 }
 
